@@ -9,7 +9,7 @@ classDiagram
     Ticket <|-- User
 
     class Event {
-        uuid EventID
+        uuid ID
         String EventName
         int TotalSeatAmount
         int FreeSeatsLeft
@@ -20,12 +20,12 @@ classDiagram
     }
 
     class Ticket {
-        uuid TicketID 
+        uuid ID 
         DateTime DateOfSale
     }
 
     class User {
-        uuid UserID
+        uuid ID
         String Nickname
         String Password
         String Email
