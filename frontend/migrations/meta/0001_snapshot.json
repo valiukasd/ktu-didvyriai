@@ -1,6 +1,6 @@
 {
-	"id": "79bb32af-f81d-451b-bae3-17eb680c2c6d",
-	"prevId": "00000000-0000-0000-0000-000000000000",
+	"id": "aea44b41-803a-4ec3-bad4-9e53fec53907",
+	"prevId": "79bb32af-f81d-451b-bae3-17eb680c2c6d",
 	"version": "7",
 	"dialect": "postgresql",
 	"tables": {
@@ -345,6 +345,56 @@
 				}
 			},
 			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.tickets": {
+			"name": "tickets",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "pg_catalog.gen_random_uuid()"
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"tickets_user_id_users_id_fk": {
+					"name": "tickets_user_id_users_id_fk",
+					"tableFrom": "tickets",
+					"tableTo": "users",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
 			"compositePrimaryKeys": {},
 			"uniqueConstraints": {},
 			"policies": {},
