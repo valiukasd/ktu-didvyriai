@@ -3,9 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-
     volumes:
-      - ../..:/workspaces:cached
+      - .:/workspace:cached
 
     command: sleep infinity
     sysctls:
