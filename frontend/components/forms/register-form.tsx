@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/input-group"
 import { RegistrationSchema } from "@/lib/schema"
 
-export function BugReportForm() {
+export function RegisterForm() {
   const form = useForm({
     defaultValues: {
       name: "",
@@ -60,10 +60,7 @@ export function BugReportForm() {
   return (
     <Card className="w-full sm:max-w-md">
       <CardHeader>
-        <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
+        <CardTitle>Account Registration</CardTitle>
       </CardHeader>
       <CardContent>
         <form
