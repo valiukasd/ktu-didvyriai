@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "generate": "drizzle-kit generate",
-    "generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts",
+    "generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts --config lib/auth/config.ts",
     "lint": "eslint"
   },
   "dependencies": {
