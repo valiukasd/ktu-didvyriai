@@ -35,5 +35,4 @@ services:
 
 volumes:
   postgres-data:
-  valkey-data:
   drizzle-gateway:
