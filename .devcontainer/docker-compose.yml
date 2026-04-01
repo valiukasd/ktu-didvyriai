@@ -3,21 +3,45 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
     volumes:
       - ../..:/workspaces:cached
+
     command: sleep infinity
-    network_mode: service:db
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "1"
+
+    depends_on:
+      - db
 
   db:
     image: postgres:18
-    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: ktutickets
-    
+      POSTGRES_DB: terravia
+
+  valkey:
+    image: valkey/valkey:9
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - valkey-data:/data
+    environment:
+      VALKEY_EXTRA_FLAGS: "--save 60 1 --loglevel warning"
+
+  gateway:
+    image: ghcr.io/drizzle-team/gateway:latest
+    ports:
+      - "4983:4983"
+    volumes:
+      - drizzle-gateway:/app
+    environment:
+      DATABASE_URL_terravia: postgres://postgres:postgres@db:5432/terravia
+    depends_on:
+      - db
 
 volumes:
   postgres-data:
+  valkey-data:
+  drizzle-gateway:
