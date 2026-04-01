@@ -21,14 +21,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: terravia
-
-  valkey:
-    image: valkey/valkey:9
-    volumes:
-      - valkey-data:/data
-    environment:
-      VALKEY_EXTRA_FLAGS: "--save 60 1 --loglevel warning"
+      POSTGRES_DB: ktu-tickets
 
   gateway:
     image: ghcr.io/drizzle-team/gateway:latest
@@ -37,7 +30,7 @@ services:
     volumes:
       - drizzle-gateway:/app
     environment:
-      DATABASE_URL_terravia: postgres://postgres:postgres@db:5432/terravia
+      DATABASE_URL_ktu-tickets: postgres://postgres:postgres@db:5432/ktu-tickets
     depends_on:
       - db
 
