@@ -22,7 +22,7 @@ import { RegistrationSchema } from "@/lib/schema";
 import { authClient } from "@/lib/auth/client";
 import { useRouter } from "next/navigation";
 
-export function RegisterForm() {
+export function LoginForm() {
 	const router = useRouter();
 
 	const form = useForm({
@@ -35,11 +35,10 @@ export function RegisterForm() {
 			onSubmit: RegistrationSchema,
 		},
 		onSubmit: async ({ value }) => {
-			await authClient.signUp.email(
+			await authClient.signIn.email(
 				{
 					email: value.email,
 					password: value.password,
-					name: value.name,
 					callbackURL: "/",
 				},
 				{
@@ -57,7 +56,7 @@ export function RegisterForm() {
 	return (
 		<Card className="w-full sm:max-w-md">
 			<CardHeader>
-				<CardTitle>Account Registration</CardTitle>
+				<CardTitle>Log in</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<form
@@ -68,31 +67,6 @@ export function RegisterForm() {
 					}}
 				>
 					<FieldGroup>
-						<form.Field
-							name="name"
-							children={(field) => {
-								const isInvalid =
-									field.state.meta.isTouched && !field.state.meta.isValid;
-								return (
-									<Field data-invalid={isInvalid}>
-										<FieldLabel htmlFor={field.name}>Account Name</FieldLabel>
-										<Input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(e.target.value)}
-											aria-invalid={isInvalid}
-											autoComplete="name"
-											type="text"
-										/>
-										{isInvalid && (
-											<FieldError errors={field.state.meta.errors} />
-										)}
-									</Field>
-								);
-							}}
-						/>
 						<form.Field
 							name="email"
 							children={(field) => {
@@ -148,7 +122,7 @@ export function RegisterForm() {
 			</CardContent>
 			<CardFooter>
 				<Button type="submit" form="bug-report-form">
-					Submit
+					Log in
 				</Button>
 			</CardFooter>
 		</Card>
