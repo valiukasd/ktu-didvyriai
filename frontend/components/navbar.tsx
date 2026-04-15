@@ -3,34 +3,26 @@
 import { authClient } from "@/lib/auth/client";
 import type { User } from "better-auth";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Fragment } from "react/jsx-runtime";
+import { buttonVariants } from "./ui/button";
 
 export default function Navbar({ user }: { user?: User }) {
-	const router = useRouter();
-
 	return (
-		<nav
-			style={{
-				display: "flex",
-				justifyContent: "space-between",
-				padding: "20px",
-				borderBottom: "1px solid #ccc",
-			}}
-		>
-			<div style={{ fontWeight: "bold" }}>
+		<nav className="flex justify-between border-b border-border px-4 py-3">
+			<div className="flex items-center">
 				<Link href="/">KTU TICKETS</Link>
 			</div>
 			<div>
 				{user ? (
-					<Fragment>
-						<p>Esate prisijunges kaip: {user.name}</p>
+					<div className="flex flex-row gap-4">
+						<Link className={buttonVariants()} href={"/account"}>
+							My account
+						</Link>
 						<button
 							onClick={async () => {
 								await authClient.signOut({
 									fetchOptions: {
 										onSuccess: () => {
-											router.push("/login");
+											window.location.replace("/");
 										},
 									},
 								});
@@ -39,9 +31,19 @@ export default function Navbar({ user }: { user?: User }) {
 						>
 							Log out
 						</button>
-					</Fragment>
+					</div>
 				) : (
-					<Link href="/registration">Register</Link>
+					<div className="flex flex-row gap-4">
+						<Link
+							href="/auth/log-in"
+							className={buttonVariants({ variant: "secondary" })}
+						>
+							Log in
+						</Link>
+						<Link href="/auth/register" className={buttonVariants()}>
+							Register
+						</Link>
+					</div>
 				)}
 			</div>
 		</nav>

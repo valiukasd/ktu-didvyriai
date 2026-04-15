@@ -6,12 +6,12 @@ import { Toaster } from "@/components/ui/sonner";
 import { getSession } from "@/lib/auth/helpers";
 
 const geistSans = Geist({
-	variable: "--font-geist-sans",
+	variable: "--font-sans",
 	subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+	variable: "--font-mono",
 	subsets: ["latin"],
 });
 
@@ -30,7 +30,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${geistSans.className} ${geistMono.className} antialiased`}
 			>
 				<Navbar user={session?.user} />
 				{children}
