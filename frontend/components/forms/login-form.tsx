@@ -18,7 +18,7 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { RegistrationSchema } from "@/lib/schema";
+import { LoginSchema } from "@/lib/schema";
 import { authClient } from "@/lib/auth/client";
 import { useRouter } from "next/navigation";
 
@@ -27,19 +27,17 @@ export function LoginForm() {
 
 	const form = useForm({
 		defaultValues: {
-			name: "",
 			email: "",
 			password: "",
 		},
 		validators: {
-			onSubmit: RegistrationSchema,
+			onSubmit: LoginSchema,
 		},
 		onSubmit: async ({ value }) => {
 			await authClient.signIn.email(
 				{
 					email: value.email,
 					password: value.password,
-					callbackURL: "/",
 				},
 				{
 					onError: (ctx) => {
@@ -48,8 +46,7 @@ export function LoginForm() {
 				},
 			);
 
-			router.refresh();
-			router.replace("/");
+			window.location.replace("/");
 		},
 	});
 
@@ -83,7 +80,7 @@ export function LoginForm() {
 											onChange={(e) => field.handleChange(e.target.value)}
 											aria-invalid={isInvalid}
 											autoComplete="email"
-											type="password"
+											type="text"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
@@ -108,7 +105,7 @@ export function LoginForm() {
 											onChange={(e) => field.handleChange(e.target.value)}
 											aria-invalid={isInvalid}
 											autoComplete="new-password"
-											type="text"
+											type="password"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />

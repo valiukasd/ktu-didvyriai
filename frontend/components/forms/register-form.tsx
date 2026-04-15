@@ -49,8 +49,7 @@ export function RegisterForm() {
 				},
 			);
 
-			router.refresh();
-			router.replace("/");
+			window.location.replace("/");
 		},
 	});
 
@@ -109,7 +108,7 @@ export function RegisterForm() {
 											onChange={(e) => field.handleChange(e.target.value)}
 											aria-invalid={isInvalid}
 											autoComplete="email"
-											type="password"
+											type="text"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
@@ -134,7 +133,7 @@ export function RegisterForm() {
 											onChange={(e) => field.handleChange(e.target.value)}
 											aria-invalid={isInvalid}
 											autoComplete="new-password"
-											type="text"
+											type="password"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
