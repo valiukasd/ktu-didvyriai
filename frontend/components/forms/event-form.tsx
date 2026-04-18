@@ -141,9 +141,10 @@ export function EventForm() {
 										<Input
 											id={field.name}
 											name={field.name}
-											value={field.state.value}
+											value={field.state.value.toDateString()}
+											//value={field.state.value.toISOString().substring(0, 10)}
 											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(e.target.valueAsDate)}
+											onChange={(e) => field.handleChange(new Date(e.target.value))}
 											aria-invalid={isInvalid}
 											type="date"
 										/>
@@ -154,31 +155,6 @@ export function EventForm() {
 								);
 							}}
 						/>
-						<form.Field
-							name="minimumAge"
-							children={(field) => {
-								const isInvalid =
-									field.state.meta.isTouched && !field.state.meta.isValid;
-								return (
-									<Field data-invalid={isInvalid}>
-										<FieldLabel htmlFor={field.name}>Ticket count</FieldLabel>
-										<Input
-											id={field.name}
-											name={field.name}
-											value={field.state.value}
-											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-											aria-invalid={isInvalid}
-											type="number"
-										/>
-										{isInvalid && (
-											<FieldError errors={field.state.meta.errors} />
-										)}
-									</Field>
-								);
-							}}
-						/>
-						
 					</FieldGroup>
 				</form>
 			</CardContent>
