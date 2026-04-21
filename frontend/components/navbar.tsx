@@ -14,7 +14,7 @@ export default function Navbar({ user }: { user?: User }) {
 			<div>
 				{user ? (
 					<div className="flex flex-row gap-4">
-						<Link className={buttonVariants()} href={"/account"}>
+						<Link className={buttonVariants()} href={"/profile"}>
 							My account
 						</Link>
 						<button
