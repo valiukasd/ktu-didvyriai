@@ -18,13 +18,10 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { LoginSchema } from "@/lib/schema";
 import { authClient } from "@/lib/auth/client";
-import { useRouter } from "next/navigation";
+import { LoginSchema } from "@/lib/schema";
 
 export function LoginForm() {
-	const router = useRouter();
-
 	const form = useForm({
 		defaultValues: {
 			email: "",
