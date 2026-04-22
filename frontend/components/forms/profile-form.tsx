@@ -20,7 +20,7 @@ export default function ProfileForm({ user }: { user: User }) {
 	const profileForm = useForm({
 		defaultValues: {
 			name: user.name,
-			age: user.age
+			age: user.age,
 		},
 		validators: {
 			onSubmit: ProfileSchema,
@@ -88,7 +88,9 @@ export default function ProfileForm({ user }: { user: User }) {
 										autoComplete="age"
 										type="number"
 										value={field.state.value}
-										onChange={(e) => field.handleChange(parseInt(e.target.value))}
+										onChange={(e) =>
+											field.handleChange(parseInt(e.target.value))
+										}
 										onBlur={field.handleBlur}
 									/>
 									<FieldError errors={error ? [{ message: error }] : []} />
