@@ -17,6 +17,9 @@ export default function Navbar({ user }: { user?: User }) {
 						<Link className={buttonVariants()} href={"/events"}>
 							Events
 						</Link>
+						<Link className={buttonVariants()} href={"/events-list"}>
+							Events I am going to
+						</Link>
 						<Link
 							className={buttonVariants({ variant: "secondary" })}
 							href={"/profile"}
