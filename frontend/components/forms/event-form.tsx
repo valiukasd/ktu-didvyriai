@@ -152,7 +152,7 @@ export function EventForm() {
 											type="date"
 										/>
 										<Popover>
-											<PopoverTrigger>
+											<PopoverTrigger asChild>
 												<Button
 													variant={"outline"}
 													id={field.name}
