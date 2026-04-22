@@ -51,3 +51,33 @@ export const ProfileSchema = v.object({
 	),
 	email: v.pipe(v.string(), v.email("Must be a valid email address.")),
 });
+
+export const EventSchema = v.object({
+	eventName: v.pipe(
+		v.string(),
+		v.minLength(4, "Event name must be at least 4 characters long."),
+		v.maxLength(256, "Event name must be at most 256 characters long."),
+		v.nonEmpty("Event name must not be empty."),
+	),
+	location: v.pipe(
+		v.string(),
+		v.minLength(2, "Location must be at least 2 characters long."),
+		v.maxLength(256, "Location must be at most 256 characters long."),
+		v.nonEmpty("Location must not be empty."),
+	),
+	eventDate: v.pipe(v.date()),
+	ticketCount: v.pipe(
+		v.number(),
+		v.integer(),
+		v.minValue(1, "Ticket count must be at least 1."),
+		v.maxValue(1000, "Ticket count must be at most 1000."),
+	),
+	minimumAge: v.optional(
+		v.pipe(
+			v.number(),
+			v.integer(),
+			v.minValue(0, "Minimum age cannot be negative."),
+			v.maxValue(120, "Minimum age must be at most 120."),
+		),
+	),
+});

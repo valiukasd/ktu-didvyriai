@@ -33,7 +33,9 @@ export default async function RootLayout({
 				className={`${geistSans.className} ${geistMono.className} antialiased`}
 			>
 				<Navbar user={session?.user} />
-				{children}
+				<div className="min-h-screen flex items-center justify-center">
+					{children}
+				</div>
 				<Toaster />
 			</body>
 		</html>
