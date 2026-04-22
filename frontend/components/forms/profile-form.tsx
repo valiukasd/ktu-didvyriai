@@ -9,10 +9,10 @@ import {
 	FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import type { User } from "@/db/types";
 import { updateProfile } from "@/lib/actions/profile";
 import { ProfileSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
-import type { User } from "better-auth";
 import { toast } from "sonner";
 import * as v from "valibot";
 
@@ -20,6 +20,7 @@ export default function ProfileForm({ user }: { user: User }) {
 	const profileForm = useForm({
 		defaultValues: {
 			name: user.name,
+			age: user.age
 		},
 		validators: {
 			onSubmit: ProfileSchema,
@@ -62,6 +63,32 @@ export default function ProfileForm({ user }: { user: User }) {
 										autoComplete="name"
 										value={field.state.value}
 										onChange={(e) => field.handleChange(e.target.value)}
+										onBlur={field.handleBlur}
+									/>
+									<FieldError errors={error ? [{ message: error }] : []} />
+								</Field>
+							);
+						}}
+					</profileForm.Field>
+					<profileForm.Field name="age">
+						{(field) => {
+							const result = v.safeParse(
+								ProfileSchema.entries.age,
+								field.state.value,
+							);
+							const error =
+								!result.success && field.state.meta.isDirty
+									? result.issues[0].message
+									: undefined;
+							return (
+								<Field>
+									<FieldLabel htmlFor="profile-age">Age</FieldLabel>
+									<Input
+										id="profile-age"
+										autoComplete="age"
+										type="number"
+										value={field.state.value}
+										onChange={(e) => field.handleChange(parseInt(e.target.value))}
 										onBlur={field.handleBlur}
 									/>
 									<FieldError errors={error ? [{ message: error }] : []} />

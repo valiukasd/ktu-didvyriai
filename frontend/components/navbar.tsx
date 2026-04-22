@@ -19,7 +19,7 @@ export default function Navbar({ user }: { user?: User }) {
 						</Link>
 						<Link
 							className={buttonVariants({ variant: "secondary" })}
-							href={"/account"}
+							href={"/profile"}
 						>
 							Account
 						</Link>

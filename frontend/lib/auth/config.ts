@@ -9,6 +9,15 @@ export const auth = betterAuth({
 		provider: "pg",
 		usePlural: true,
 	}),
+	user: {
+       additionalFields: {
+          age: {
+              type: "number",
+              input: true,
+			  defaultValue: 18
+            } 
+        }
+    },
 	emailAndPassword: {
 		enabled: true,
 	},
