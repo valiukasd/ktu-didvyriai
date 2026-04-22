@@ -50,7 +50,7 @@ export function EventForm() {
 				<CardTitle>Create an event</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<form
+				<form id="bug-report-form"
 					onSubmit={(e) => {
 						e.preventDefault();
 						form.handleSubmit();
@@ -189,7 +189,7 @@ export function EventForm() {
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button type="submit">Create event</Button>
+				<Button type="submit" form="bug-report-form">Create event</Button>
 			</CardFooter>
 		</Card>
 	);
