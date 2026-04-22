@@ -27,6 +27,7 @@ export function RegisterForm() {
 			name: "",
 			email: "",
 			password: "",
+			age: 20
 		},
 		validators: {
 			onSubmit: RegistrationSchema,
@@ -37,6 +38,7 @@ export function RegisterForm() {
 					email: value.email,
 					password: value.password,
 					name: value.name,
+					age: value.age,
 					callbackURL: "/",
 				},
 				{
@@ -71,7 +73,7 @@ export function RegisterForm() {
 									field.state.meta.isTouched && !field.state.meta.isValid;
 								return (
 									<Field data-invalid={isInvalid}>
-										<FieldLabel htmlFor={field.name}>Account Name</FieldLabel>
+										<FieldLabel htmlFor={field.name}>Full name</FieldLabel>
 										<Input
 											id={field.name}
 											name={field.name}
@@ -81,6 +83,31 @@ export function RegisterForm() {
 											aria-invalid={isInvalid}
 											autoComplete="name"
 											type="text"
+										/>
+										{isInvalid && (
+											<FieldError errors={field.state.meta.errors} />
+										)}
+									</Field>
+								);
+							}}
+						/>
+						<form.Field
+							name="age"
+							children={(field) => {
+								const isInvalid =
+									field.state.meta.isTouched && !field.state.meta.isValid;
+								return (
+									<Field data-invalid={isInvalid}>
+										<FieldLabel htmlFor={field.name}>Age</FieldLabel>
+										<Input
+											id={field.name}
+											name={field.name}
+											value={field.state.value}
+											onBlur={field.handleBlur}
+											onChange={(e) => field.handleChange(parseInt(e.target.value))}
+											aria-invalid={isInvalid}
+											autoComplete="age"
+											type="number"
 										/>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
