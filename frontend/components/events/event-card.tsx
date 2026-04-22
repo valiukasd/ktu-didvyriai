@@ -1,7 +1,8 @@
 import { InferSelectModel } from "drizzle-orm";
 import { events } from "@/db/schema/ticket";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 
 type Event = InferSelectModel<typeof events>;
 
@@ -18,7 +19,7 @@ export function EventCard({ event }: { event: Event }) {
 				{event.minimumAge && <p><strong>Minimum Age:</strong> {event.minimumAge}+</p>}
 			</CardContent>
 			<CardFooter>
-				<Button className="w-full">View Details</Button>
+				<Link className={buttonVariants({className: "w-full"})} href={`/events/${event.id}`}>View Details</Link>
 			</CardFooter>
 		</Card>
 	);

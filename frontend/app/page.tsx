@@ -8,13 +8,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
 	const events = await getEvents({ upcoming: isUpcoming });
 
 	return (
-		<div className="flex flex-col gap-6 max-w-4xl mx-auto py-8">
+		<div className="flex flex-col gap-6 w-full max-w-4xl mx-auto py-8">
 			<div className="flex flex-row flex-wrap gap-4 justify-between items-center w-full">
 				<h1 className="text-2xl font-semibold">{isUpcoming ? "Upcoming" : "Past"} events</h1>
 				<EventFilter />
 			</div>
 
-			<div className="flex flex-col gap-4">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 				{events.map((event) => (
 					<EventCard key={event.id} event={event} />
 				))}

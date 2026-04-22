@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function MyEventsPage() {
+export default function EventPage() {
 	return (
 		<div>
 			<div className="flex flex-row justify-between items-center">
