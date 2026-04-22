@@ -19,8 +19,8 @@ import { createEvent } from "@/lib/actions/events";
 import { EventSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 export function EventForm() {
 	const form = useForm({
