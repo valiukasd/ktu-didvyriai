@@ -41,6 +41,8 @@ export function EventForm() {
 
 				toast("An unknown error ocurred! Try again later.");
 			}
+			
+			window.location.replace("/");
 		},
 	});
 
