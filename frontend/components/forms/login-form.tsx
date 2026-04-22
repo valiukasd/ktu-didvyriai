@@ -22,7 +22,6 @@ import { authClient } from "@/lib/auth/client";
 import { LoginSchema } from "@/lib/schema";
 
 export function LoginForm() {
-
 	const form = useForm({
 		defaultValues: {
 			email: "",
