@@ -1,6 +1,5 @@
 "use client";
 
-import { useForm } from "@tanstack/react-form";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -16,14 +15,12 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { EventSchema } from "@/lib/schema";
-import { useRouter } from "next/navigation";
 import { createEvent } from "@/lib/actions/events";
+import { EventSchema } from "@/lib/schema";
+import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
 
 export function EventForm() {
-	const router = useRouter();
-
 	const form = useForm({
 		defaultValues: {
 			eventName: "",

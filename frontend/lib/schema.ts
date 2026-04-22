@@ -49,7 +49,6 @@ export const ProfileSchema = v.object({
 		v.maxLength(20, "Full name must be at most 50 characters long."),
 		v.nonEmpty("Full name must not be empty."),
 	),
-	email: v.pipe(v.string(), v.email("Must be a valid email address.")),
 });
 
 export const EventSchema = v.object({
