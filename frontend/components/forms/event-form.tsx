@@ -119,7 +119,9 @@ export function EventForm() {
 											name={field.name}
 											value={field.state.value}
 											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(e.target.valueAsNumber)}
+											onChange={(e) =>
+												field.handleChange(e.target.valueAsNumber)
+											}
 											aria-invalid={isInvalid}
 											type="number"
 										/>
@@ -144,7 +146,9 @@ export function EventForm() {
 											value={field.state.value.toDateString()}
 											//value={field.state.value.toISOString().substring(0, 10)}
 											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(new Date(e.target.value))}
+											onChange={(e) =>
+												field.handleChange(new Date(e.target.value))
+											}
 											aria-invalid={isInvalid}
 											type="date"
 										/>

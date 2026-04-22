@@ -14,8 +14,14 @@ export default function Navbar({ user }: { user?: User }) {
 			<div>
 				{user ? (
 					<div className="flex flex-row gap-4">
-						<Link className={buttonVariants()} href={"/account"}>
-							My account
+						<Link className={buttonVariants()} href={"/events"}>
+							Events
+						</Link>
+						<Link
+							className={buttonVariants({ variant: "secondary" })}
+							href={"/account"}
+						>
+							Account
 						</Link>
 						<button
 							onClick={async () => {

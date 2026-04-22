@@ -6,8 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"format": "pnpx @biomejs/biome format --write",
-		"lint": "pnpx @biomejs/biome lint --write",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
 		"generate": "drizzle-kit generate",
 		"generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts --config lib/auth/config.ts"
 	},
