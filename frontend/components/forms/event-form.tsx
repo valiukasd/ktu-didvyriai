@@ -139,7 +139,7 @@ export function EventForm() {
 								return (
 									<Field data-invalid={isInvalid}>
 										<FieldLabel htmlFor={field.name}>Event date</FieldLabel>
-										<Input
+										{/*<Input
 											id={field.name}
 											name={field.name}
 											value={field.state.value.toDateString()}
@@ -150,7 +150,7 @@ export function EventForm() {
 											}
 											aria-invalid={isInvalid}
 											type="date"
-										/>
+										/>*/}
 										<Popover>
 											<PopoverTrigger asChild>
 												<Button
