@@ -1,16 +1,18 @@
 import { buttonVariants } from "@/components/ui/button";
+import { getEvent } from "@/lib/data/events";
 import Link from "next/link";
 
-export default function EventPage() {
+export default async function EventPage({ 
+  params 
+}: { 
+  params: Promise<{ id: string }> 
+}) {
+  const { id } = await params;
+  const event = await getEvent(id);
+
 	return (
 		<div>
-			<div className="flex flex-row justify-between items-center">
-				<h1 className="text-2xl font-semibold">My events</h1>
-				<Link className={buttonVariants()} href="/events/create">
-					Create an event
-				</Link>
-			</div>
-			This page should show the events of the user that he created
+            {event.eventName}
 		</div>
 	);
 }
