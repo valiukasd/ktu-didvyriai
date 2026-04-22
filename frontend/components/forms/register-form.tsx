@@ -18,12 +18,10 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { RegistrationSchema } from "@/lib/schema";
 import { authClient } from "@/lib/auth/client";
-import { useRouter } from "next/navigation";
+import { RegistrationSchema } from "@/lib/schema";
 
 export function RegisterForm() {
-	const router = useRouter();
 
 	const form = useForm({
 		defaultValues: {

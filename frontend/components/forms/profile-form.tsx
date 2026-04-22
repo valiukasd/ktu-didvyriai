@@ -14,12 +14,10 @@ import { Input } from "@/components/ui/input";
 import { updateProfile } from "@/lib/actions/profile";
 import { ProfileSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import * as v from "valibot";
 
 export default function ProfileForm() {
-	const router = useRouter();
 
 	const profileForm = useForm({
 		defaultValues: {
