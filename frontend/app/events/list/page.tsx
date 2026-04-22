@@ -2,9 +2,6 @@ import { EventCard } from "@/components/events/event-card";
 import { EventFilter } from "@/components/events/event-filter";
 import { getEvents } from "@/lib/data/events";
 import { getSession } from "@/lib/data/profile";
-import { User } from "@hugeicons/core-free-icons";
-import { Session } from "inspector/promises";
-
 export default async function Home({
     searchParams,
 }: {
