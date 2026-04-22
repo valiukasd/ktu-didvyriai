@@ -42,3 +42,47 @@ export async function getEvent(id: string) {
 
 	return { event };
 }
+
+/**
+ * Get event with ticket information (availability and registration status)
+ */
+export async function getEventWithTicketInfo(eventId: string) {
+	const session = await getSession();
+
+	const [event] = await db
+		.select()
+		.from(events)
+		.where(eq(events.id, eventId));
+
+	if (!event) {
+		return null;
+	}
+
+	const registeredTickets = await db
+		.select()
+		.from(tickets)
+		.where(eq(tickets.eventId, eventId));
+
+	const availableTickets = event.ticketCount - registeredTickets.length;
+
+	let isUserRegistered = false;
+	if (session?.user) {
+		const [userTicket] = await db
+			.select()
+			.from(tickets)
+			.where(
+				and(
+					eq(tickets.userId, session.user.id),
+					eq(tickets.eventId, eventId),
+				),
+			);
+		isUserRegistered = !!userTicket;
+	}
+
+	return {
+		event,
+		registeredCount: registeredTickets.length,
+		availableTickets,
+		isUserRegistered,
+	};
+}
