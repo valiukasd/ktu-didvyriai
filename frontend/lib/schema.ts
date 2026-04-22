@@ -16,7 +16,7 @@ export const RegistrationSchema = v.object({
 		v.number("Age is required"),
 		v.integer("Age must be an integer"),
 		v.minValue(0, "Age cannot be lower than 1"),
-		v.maxValue(150, "Age cannot be more than 150")
+		v.maxValue(150, "Age cannot be more than 150"),
 	),
 	password: v.pipe(
 		v.string(),
@@ -55,11 +55,11 @@ export const ProfileSchema = v.object({
 		v.maxLength(20, "Full name must be at most 50 characters long."),
 		v.nonEmpty("Full name must not be empty."),
 	),
-		age: v.pipe(
+	age: v.pipe(
 		v.number("Age is required"),
 		v.integer("Age must be an integer"),
 		v.minValue(0, "Age cannot be lower than 1"),
-		v.maxValue(150, "Age cannot be more than 150")
+		v.maxValue(150, "Age cannot be more than 150"),
 	),
 });
 

@@ -10,12 +10,12 @@ export default async function Home() {
 	return (
 		<div>
 			<div className="flex flex-col gap-2 mb-4">
-		<h1 className="text-2xl font-semibold tracking-tight">Your Profile</h1>
-					<p className="text-sm text-muted-foreground">
-						Manage your account details.
-					</p>
+				<h1 className="text-2xl font-semibold tracking-tight">Your Profile</h1>
+				<p className="text-sm text-muted-foreground">
+					Manage your account details.
+				</p>
 			</div>
-			
+
 			<ProfileForm user={session.user} />
 		</div>
 	);

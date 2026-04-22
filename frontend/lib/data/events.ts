@@ -8,6 +8,7 @@ import { getSession } from "./profile";
 export async function getEvents(filters?: { upcoming?: boolean }) {
     const query = db.select().from(events);
 
+<<<<<<< HEAD
     if (filters?.upcoming !== undefined) {
         if (filters.upcoming) {
             query.where(gt(events.eventDate, new Date()));
@@ -15,8 +16,17 @@ export async function getEvents(filters?: { upcoming?: boolean }) {
             query.where(lt(events.eventDate, new Date()));
         }
     }
+=======
+	if (filters?.upcoming !== undefined) {
+		if (filters.upcoming) {
+			query.where(gt(events.eventDate, new Date()));
+		} else {
+			query.where(lt(events.eventDate, new Date()));
+		}
+	}
+>>>>>>> aa1100e812e512d4fb853b70622ce5e40959520c
 
-    const data = await query;
+	const data = await query;
 
     return data;
 }
@@ -24,6 +34,7 @@ export async function getEvents(filters?: { upcoming?: boolean }) {
 export async function getEvent(id: string) {
     const session = await getSession();
 
+<<<<<<< HEAD
     const [event] = await db.select().from(events).where(eq(events.id, id));
 
     if (session?.user) {
@@ -41,4 +52,7 @@ export async function getEvent(id: string) {
     }
 
     return { event };
+=======
+	return event;
+>>>>>>> aa1100e812e512d4fb853b70622ce5e40959520c
 }

@@ -19,6 +19,8 @@ import { createEvent } from "@/lib/actions/events";
 import { EventSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Calendar } from "../ui/calendar";
 
 export function EventForm() {
 	const form = useForm({
@@ -149,6 +151,33 @@ export function EventForm() {
 											aria-invalid={isInvalid}
 											type="date"
 										/>
+										<Popover>
+											<PopoverTrigger>
+												<Button
+													variant={"outline"}
+													id={field.name}
+													name={field.name}
+													onBlur={field.handleBlur}
+													aria-invalid={isInvalid}
+													data-empty={!field.state.value}
+													className="w-53 justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
+												>
+													{field.state.value ? (
+														new Date(field.state.value).toISOString()
+													) : (
+														<span>Pick a date</span>
+													)}
+												</Button>
+											</PopoverTrigger>
+											<PopoverContent className="w-auto p-0" align="start">
+												<Calendar
+													mode="single"
+													selected={field.state.value}
+													onSelect={(e) => field.handleChange(e ?? new Date())}
+													defaultMonth={field.state.value}
+												/>
+											</PopoverContent>
+										</Popover>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
 										)}
