@@ -21,6 +21,7 @@ export async function updateProfile(
     return await auth.api.updateUser({
         body: {
             name: values.name,
+            age: values.age
         },
         headers: await headers(),
     });
