@@ -18,11 +18,9 @@ import { toast } from "sonner";
 import * as v from "valibot";
 
 export default function ProfileForm() {
-
 	const profileForm = useForm({
 		defaultValues: {
 			name: "",
-
 		},
 
 		validators: {
@@ -85,8 +83,6 @@ export default function ProfileForm() {
 										);
 									}}
 								</profileForm.Field>
-
-
 							</FieldGroup>
 						</FieldSet>
 

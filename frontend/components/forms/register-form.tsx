@@ -22,7 +22,6 @@ import { authClient } from "@/lib/auth/client";
 import { RegistrationSchema } from "@/lib/schema";
 
 export function RegisterForm() {
-
 	const form = useForm({
 		defaultValues: {
 			name: "",

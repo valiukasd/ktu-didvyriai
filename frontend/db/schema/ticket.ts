@@ -26,8 +26,12 @@ export const events = pgTable("events", {
 
 export const tickets = pgTable("tickets", {
 	id: uuid("id").defaultRandom().primaryKey(),
-	userId: uuid("user_id").references(() => users.id).notNull(),
-	eventId: uuid("event_id").references(() => events.id).notNull(),
+	userId: uuid("user_id")
+		.references(() => users.id)
+		.notNull(),
+	eventId: uuid("event_id")
+		.references(() => events.id)
+		.notNull(),
 	createdAt: timestamp("created_at").defaultNow().notNull(),
 	updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

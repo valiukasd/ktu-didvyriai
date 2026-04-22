@@ -9,8 +9,8 @@ import { headers } from "next/headers";
 
 export async function createEvent(payload: InferOutput<typeof EventSchema>) {
 	const session = await auth.api.getSession({
-        headers: await headers()
-    });
+		headers: await headers(),
+	});
 
 	if (!session) {
 		throw new Error("Unauthorized"); // Zmogus neprisijunges
