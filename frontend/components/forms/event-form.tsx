@@ -41,6 +41,8 @@ export function EventForm() {
 
 				toast("An unknown error ocurred! Try again later.");
 			}
+			
+			window.location.replace("/");
 		},
 	});
 
@@ -189,7 +191,7 @@ export function EventForm() {
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button type="submit">Create event</Button>
+				<Button type="submit" form="bug-report-form">Create event</Button>
 			</CardFooter>
 		</Card>
 	);
