@@ -8,7 +8,7 @@ import {
 	CardDescription,
 	CardFooter,
 } from "@/components/ui/card";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
 type Event = InferSelectModel<typeof events>;

@@ -14,12 +14,13 @@ export default function Navbar({ user }: { user?: User }) {
 			<div>
 				{user ? (
 					<div className="flex flex-row gap-4">
-						<Link className={buttonVariants()} href={"/events"}>
-							Events
+						<Link className={buttonVariants()} href={"/tickets"}>
+							My Tickets
 						</Link>
-						<Link className={buttonVariants()} href={"/events/list"}>
-							Events I am going to
+						<Link className={buttonVariants({variant: "secondary"})} href={"/events"}>
+							My Events
 						</Link>
+						
 						<Link
 							className={buttonVariants({ variant: "secondary" })}
 							href={"/profile"}
