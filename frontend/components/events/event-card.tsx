@@ -1,6 +1,13 @@
 import { InferSelectModel } from "drizzle-orm";
 import { events } from "@/db/schema/ticket";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from "@/components/ui/card";
+import {
+	Card,
+	CardHeader,
+	CardTitle,
+	CardContent,
+	CardDescription,
+	CardFooter,
+} from "@/components/ui/card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -11,15 +18,30 @@ export function EventCard({ event }: { event: Event }) {
 		<Card className="w-full">
 			<CardHeader>
 				<CardTitle>{event.eventName}</CardTitle>
-				<CardDescription>{new Date(event.eventDate).toLocaleDateString()}</CardDescription>
+				<CardDescription>
+					{new Date(event.eventDate).toLocaleDateString()}
+				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<p><strong>Location:</strong> {event.location}</p>
-				<p><strong>Tickets Available:</strong> {event.ticketCount}</p>
-				{event.minimumAge && <p><strong>Minimum Age:</strong> {event.minimumAge}+</p>}
+				<p>
+					<strong>Location:</strong> {event.location}
+				</p>
+				<p>
+					<strong>Tickets Available:</strong> {event.ticketCount}
+				</p>
+				{event.minimumAge && (
+					<p>
+						<strong>Minimum Age:</strong> {event.minimumAge}+
+					</p>
+				)}
 			</CardContent>
 			<CardFooter>
-				<Link className={buttonVariants({className: "w-full"})} href={`/events/${event.id}`}>View Details</Link>
+				<Link
+					className={buttonVariants({ className: "w-full" })}
+					href={`/events/${event.id}`}
+				>
+					View Details
+				</Link>
 			</CardFooter>
 		</Card>
 	);

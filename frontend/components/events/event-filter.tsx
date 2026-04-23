@@ -20,7 +20,7 @@ export function EventFilter() {
 			}
 			router.push(`/?${params.toString()}`);
 		},
-		[router, searchParams]
+		[router, searchParams],
 	);
 
 	return (

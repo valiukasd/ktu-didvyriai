@@ -19,6 +19,8 @@ import { createEvent } from "@/lib/actions/events";
 import { EventSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 export function EventForm() {
 	const form = useForm({
@@ -39,6 +41,8 @@ export function EventForm() {
 
 				toast("An unknown error ocurred! Try again later.");
 			}
+			
+			window.location.replace("/");
 		},
 	});
 
@@ -48,7 +52,7 @@ export function EventForm() {
 				<CardTitle>Create an event</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<form
+				<form id="bug-report-form"
 					onSubmit={(e) => {
 						e.preventDefault();
 						form.handleSubmit();
@@ -137,7 +141,7 @@ export function EventForm() {
 								return (
 									<Field data-invalid={isInvalid}>
 										<FieldLabel htmlFor={field.name}>Event date</FieldLabel>
-										<Input
+										{/*<Input
 											id={field.name}
 											name={field.name}
 											value={field.state.value.toDateString()}
@@ -148,7 +152,34 @@ export function EventForm() {
 											}
 											aria-invalid={isInvalid}
 											type="date"
-										/>
+										/>*/}
+										<Popover>
+											<PopoverTrigger asChild>
+												<Button
+													variant={"outline"}
+													id={field.name}
+													name={field.name}
+													onBlur={field.handleBlur}
+													aria-invalid={isInvalid}
+													data-empty={!field.state.value}
+													className="w-53 justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
+												>
+													{field.state.value ? (
+														new Date(field.state.value).toISOString()
+													) : (
+														<span>Pick a date</span>
+													)}
+												</Button>
+											</PopoverTrigger>
+											<PopoverContent className="w-auto p-0" align="start">
+												<Calendar
+													mode="single"
+													selected={field.state.value}
+													onSelect={(e) => field.handleChange(e ?? new Date())}
+													defaultMonth={field.state.value}
+												/>
+											</PopoverContent>
+										</Popover>
 										{isInvalid && (
 											<FieldError errors={field.state.meta.errors} />
 										)}
@@ -160,7 +191,7 @@ export function EventForm() {
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button type="submit">Create event</Button>
+				<Button type="submit" form="bug-report-form">Create event</Button>
 			</CardFooter>
 		</Card>
 	);

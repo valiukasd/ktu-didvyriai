@@ -2,7 +2,11 @@ import { EventCard } from "@/components/events/event-card";
 import { EventFilter } from "@/components/events/event-filter";
 import { getEvents } from "@/lib/data/events";
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+export default async function Home({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
 	const params = await searchParams;
 	const isUpcoming = params.upcoming !== "false";
 	const events = await getEvents({ upcoming: isUpcoming });
@@ -10,7 +14,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
 	return (
 		<div className="flex flex-col gap-6 w-full max-w-4xl mx-auto py-8">
 			<div className="flex flex-row flex-wrap gap-4 justify-between items-center w-full">
-				<h1 className="text-2xl font-semibold">{isUpcoming ? "Upcoming" : "Past"} events</h1>
+				<h1 className="text-2xl font-semibold">
+					{isUpcoming ? "Upcoming" : "Past"} events
+				</h1>
 				<EventFilter />
 			</div>
 

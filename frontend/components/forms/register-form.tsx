@@ -27,7 +27,7 @@ export function RegisterForm() {
 			name: "",
 			email: "",
 			password: "",
-			age: 20
+			age: 20,
 		},
 		validators: {
 			onSubmit: RegistrationSchema,
@@ -104,7 +104,9 @@ export function RegisterForm() {
 											name={field.name}
 											value={field.state.value}
 											onBlur={field.handleBlur}
-											onChange={(e) => field.handleChange(parseInt(e.target.value))}
+											onChange={(e) =>
+												field.handleChange(parseInt(e.target.value))
+											}
 											aria-invalid={isInvalid}
 											autoComplete="age"
 											type="number"

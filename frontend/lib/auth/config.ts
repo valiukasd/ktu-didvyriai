@@ -10,14 +10,14 @@ export const auth = betterAuth({
 		usePlural: true,
 	}),
 	user: {
-       additionalFields: {
-          age: {
-              type: "number",
-              input: true,
-			  defaultValue: 18
-            } 
-        }
-    },
+		additionalFields: {
+			age: {
+				type: "number",
+				input: true,
+				defaultValue: 18,
+			},
+		},
+	},
 	emailAndPassword: {
 		enabled: true,
 	},

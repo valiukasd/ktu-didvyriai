@@ -9,5 +9,5 @@ export async function getSession() {
 		headers: await headers(),
 	});
 
-    return {session: res?.session, user: res?.user as User}
+	return { session: res?.session, user: res?.user as User };
 }
