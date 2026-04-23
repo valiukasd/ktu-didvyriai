@@ -1,9 +1,10 @@
 "use server";
 
 import { db } from "@/db/client";
-import { events } from "@/db/schema";
-import { gt, lt } from "drizzle-orm";
+import { events, tickets } from "@/db/schema";
+import { gt, lt, eq, and } from "drizzle-orm";
 import { getSession } from "./profile";
+import type { Ticket } from "@/db/types";
 
 export async function getEvents(filters?: { upcoming?: boolean }) {
     const query = db.select().from(events);
@@ -24,5 +25,13 @@ export async function getEvents(filters?: { upcoming?: boolean }) {
 export async function getEvent(id: string) {
     const session = await getSession();
 
-    return event;
+    const [event] = await db.select().from(events).where(eq(events.id, id));
+
+    let ticket: Ticket | undefined;
+
+    if(session.user) {
+        [ticket] = await db.select().from(tickets).where(and(eq(tickets.eventId, id), eq(tickets.userId, session.user.id)))
+    }
+
+    return {event, ticket: ticket};
 }
