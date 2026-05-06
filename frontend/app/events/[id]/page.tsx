@@ -31,8 +31,12 @@ export default async function EventPage({
 		<div className="flex w-full max-w-4xl flex-col gap-6 py-8">
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-col gap-1">
-					<h1 className="text-2xl font-semibold tracking-tight">{event.eventName}</h1>
-					<p className="text-sm text-muted-foreground">Event details and your ticket status</p>
+					<h1 className="text-2xl font-semibold tracking-tight">
+						{event.eventName}
+					</h1>
+					<p className="text-sm text-muted-foreground">
+						Event details and your ticket status
+					</p>
 				</div>
 				<Link href="/" className={buttonVariants({ variant: "outline" })}>
 					Back to events
@@ -79,12 +83,15 @@ export default async function EventPage({
 					<CardContent className="space-y-3">
 						{ticket ? (
 							<>
-								<p className="text-sm text-muted-foreground">You are registered for this event.</p>
+								<p className="text-sm text-muted-foreground">
+									You are registered for this event.
+								</p>
 								<p>
 									<strong>Ticket ID:</strong> {ticket.id}
 								</p>
 								<p>
-									<strong>Registered at:</strong> {new Date(ticket.createdAt).toLocaleString()}
+									<strong>Registered at:</strong>{" "}
+									{new Date(ticket.createdAt).toLocaleString()}
 								</p>
 							</>
 						) : (

@@ -6,6 +6,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
 	return (
 		<HugeiconsIcon
 			icon={Loading03Icon}
+			// @ts-expect-error The strokeWidth type is incorrectly typed in HugeiconsIcon
 			strokeWidth={2}
 			role="status"
 			aria-label="Loading"

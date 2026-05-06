@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { getSession } from "@/lib/auth/helpers";
-// @ts-expect-error There is no error here
 import "./globals.css";
 
 const geistSans = Geist({

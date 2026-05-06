@@ -15,16 +15,29 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { createEvent } from "@/lib/actions/events";
+import { createEvent, updateEvent } from "@/lib/actions/events";
 import { EventSchema } from "@/lib/schema";
 import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
 import { Calendar } from "../ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-export function EventForm() {
+export function EventForm({
+	initialData,
+	eventId,
+}: {
+	initialData?: {
+		eventName: string;
+		location: string;
+		ticketCount: number;
+		eventDate: Date;
+	};
+	eventId?: string;
+}) {
+	const isEdit = !!eventId;
+
 	const form = useForm({
-		defaultValues: {
+		defaultValues: initialData || {
 			eventName: "",
 			location: "",
 			ticketCount: 10,
@@ -35,24 +48,27 @@ export function EventForm() {
 		},
 		onSubmit: async ({ value }) => {
 			try {
-				await createEvent(value);
+				if (isEdit && eventId) {
+					await updateEvent(eventId, value);
+				} else {
+					await createEvent(value);
+				}
+				window.location.replace("/events");
 			} catch (err) {
 				console.error(err);
-
-				toast("An unknown error ocurred! Try again later.");
+				toast("An unknown error occurred! Try again later.");
 			}
-			
-			window.location.replace("/");
 		},
 	});
 
 	return (
 		<Card className="w-full sm:max-w-md">
 			<CardHeader>
-				<CardTitle>Create an event</CardTitle>
+				<CardTitle>{isEdit ? "Edit event" : "Create an event"}</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<form id="bug-report-form"
+				<form
+					id="bug-report-form"
 					onSubmit={(e) => {
 						e.preventDefault();
 						form.handleSubmit();
@@ -191,7 +207,9 @@ export function EventForm() {
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button type="submit" form="bug-report-form">Create event</Button>
+				<Button type="submit" form="bug-report-form">
+					{isEdit ? "Save changes" : "Create event"}
+				</Button>
 			</CardFooter>
 		</Card>
 	);

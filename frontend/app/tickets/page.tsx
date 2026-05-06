@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { getMyTickets } from "@/lib/data/tickets";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
