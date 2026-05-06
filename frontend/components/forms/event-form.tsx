@@ -67,7 +67,8 @@ export function EventForm({
 				<CardTitle>{isEdit ? "Edit event" : "Create an event"}</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<form id="bug-report-form"
+				<form
+					id="bug-report-form"
 					onSubmit={(e) => {
 						e.preventDefault();
 						form.handleSubmit();
@@ -206,7 +207,9 @@ export function EventForm({
 				</form>
 			</CardContent>
 			<CardFooter>
-				<Button type="submit" form="bug-report-form">{isEdit ? "Save changes" : "Create event"}</Button>
+				<Button type="submit" form="bug-report-form">
+					{isEdit ? "Save changes" : "Create event"}
+				</Button>
 			</CardFooter>
 		</Card>
 	);

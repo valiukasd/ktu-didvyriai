@@ -15,7 +15,13 @@ import Link from "next/link";
 
 type Event = InferSelectModel<typeof events>;
 
-export function EventCard({ event, isOwner = false }: { event: Event; isOwner?: boolean }) {
+export function EventCard({
+	event,
+	isOwner = false,
+}: {
+	event: Event;
+	isOwner?: boolean;
+}) {
 	return (
 		<Card className="w-full">
 			<CardHeader>
@@ -39,7 +45,10 @@ export function EventCard({ event, isOwner = false }: { event: Event; isOwner?: 
 			</CardContent>
 			<CardFooter className="flex flex-row flex-wrap gap-2">
 				<Link
-					className={buttonVariants({ className: "w-full sm:w-auto", variant: isOwner ? "secondary" : "default" })}
+					className={buttonVariants({
+						className: "w-full sm:w-auto",
+						variant: isOwner ? "secondary" : "default",
+					})}
 					href={`/events/${event.id}`}
 				>
 					{isOwner ? "View" : "View Details"}
@@ -48,7 +57,10 @@ export function EventCard({ event, isOwner = false }: { event: Event; isOwner?: 
 					<>
 						<Link
 							href={`/events/${event.id}/edit`}
-							className={buttonVariants({ variant: "outline", className: "w-full sm:w-auto" })}
+							className={buttonVariants({
+								variant: "outline",
+								className: "w-full sm:w-auto",
+							})}
 						>
 							Edit
 						</Link>

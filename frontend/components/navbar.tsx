@@ -17,10 +17,13 @@ export default function Navbar({ user }: { user?: User }) {
 						<Link className={buttonVariants()} href={"/tickets"}>
 							My Tickets
 						</Link>
-						<Link className={buttonVariants({variant: "secondary"})} href={"/events"}>
+						<Link
+							className={buttonVariants({ variant: "secondary" })}
+							href={"/events"}
+						>
 							My Events
 						</Link>
-						
+
 						<Link
 							className={buttonVariants({ variant: "secondary" })}
 							href={"/profile"}

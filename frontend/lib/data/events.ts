@@ -7,41 +7,47 @@ import { getSession } from "./profile";
 import type { Ticket } from "@/db/types";
 
 export async function getEvents(filters?: { upcoming?: boolean }) {
-    const query = db.select().from(events);
+	const query = db.select().from(events);
 
-    if (filters?.upcoming !== undefined) {
-        if (filters.upcoming) {
-            query.where(gt(events.eventDate, new Date()));
-        } else {
-            query.where(lt(events.eventDate, new Date()));
-        }
-    }
+	if (filters?.upcoming !== undefined) {
+		if (filters.upcoming) {
+			query.where(gt(events.eventDate, new Date()));
+		} else {
+			query.where(lt(events.eventDate, new Date()));
+		}
+	}
 
-    const data = await query;
+	const data = await query;
 
-    return data;
+	return data;
 }
 
 export async function getEvent(id: string) {
-    const session = await getSession();
+	const session = await getSession();
 
-    const [event] = await db.select().from(events).where(eq(events.id, id));
+	const [event] = await db.select().from(events).where(eq(events.id, id));
 
-    let ticket: Ticket | undefined;
+	let ticket: Ticket | undefined;
 
-    if(session.user) {
-        [ticket] = await db.select().from(tickets).where(and(eq(tickets.eventId, id), eq(tickets.userId, session.user.id)))
-    }
+	if (session.user) {
+		[ticket] = await db
+			.select()
+			.from(tickets)
+			.where(and(eq(tickets.eventId, id), eq(tickets.userId, session.user.id)));
+	}
 
-    return {event, ticket: ticket};
+	return { event, ticket: ticket };
 }
 
 export async function getMyEvents() {
-    const session = await getSession();
+	const session = await getSession();
 
-    if (!session.user) {
-        return [];
-    }
+	if (!session.user) {
+		return [];
+	}
 
-    return await db.select().from(events).where(eq(events.creatorId, session.user.id));
+	return await db
+		.select()
+		.from(events)
+		.where(eq(events.creatorId, session.user.id));
 }

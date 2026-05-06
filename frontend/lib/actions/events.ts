@@ -28,7 +28,10 @@ export async function createEvent(payload: InferOutput<typeof EventSchema>) {
 	return event;
 }
 
-export async function updateEvent(id: string, payload: InferOutput<typeof EventSchema>) {
+export async function updateEvent(
+	id: string,
+	payload: InferOutput<typeof EventSchema>,
+) {
 	const session = await auth.api.getSession({
 		headers: await headers(),
 	});
@@ -57,6 +60,8 @@ export async function deleteEvent(id: string) {
 		throw new Error("Unauthorized");
 	}
 
-	await db.delete(events).where(and(eq(events.id, id), eq(events.creatorId, session.user.id)));
+	await db
+		.delete(events)
+		.where(and(eq(events.id, id), eq(events.creatorId, session.user.id)));
 	revalidatePath("/events");
 }

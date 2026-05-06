@@ -1,8 +1,12 @@
 import { buttonVariants } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { getMyEvents } from "@/lib/data/events";
-import { deleteEvent } from "@/lib/actions/events";
 import { EventCard } from "@/components/events/event-card";
 import Link from "next/link";
 
