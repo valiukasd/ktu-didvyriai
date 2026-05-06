@@ -1,16 +1,15 @@
-import { InferSelectModel } from "drizzle-orm";
-import { events } from "@/db/schema/ticket";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	Card,
-	CardHeader,
-	CardTitle,
 	CardContent,
 	CardDescription,
 	CardFooter,
+	CardHeader,
+	CardTitle,
 } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
-import { Button } from "@/components/ui/button";
+import { events } from "@/db/schema/ticket";
 import { deleteEvent } from "@/lib/actions/events";
+import { InferSelectModel } from "drizzle-orm";
 import Link from "next/link";
 
 type Event = InferSelectModel<typeof events>;

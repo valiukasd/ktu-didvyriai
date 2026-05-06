@@ -82,8 +82,14 @@
 | Simonas | Extract shared UI primitives into `components/ui/` with examples |
 | Mikalojus | Add basic query logging/profiling and a plan to address slow queries |
 
-**Consolidated Action Items**
-- **Process:** Add a short PR checklist (description, testing steps, reviewer); limit WIP; schedule mid-sprint integration checkpoints.
-- **Quality:** Create a minimal test harness (Vitest or Jest), add an example test, enable pre-commit lint/format hooks, and add CI to run lint/type-check/tests on PRs.
-- **UX/Design:** Create a small component backlog and document shared UI primitives with usage examples.
-- **Technical:** Remove top-level auto-migrate from client.ts; make migrations explicit with dry-run and rollback steps; introduce lightweight profiling/alerts for slow queries.
+**sprint 4**
+
+Deividas | 
+Darius | reviews are slow, should have a dedicated person to review atleast once a day
+Mikalojus | 
+
+**sprint 4**
+
+Deividas | 
+Darius | we should act upon the retrospective of previous sprints
+Mikalojus | 
