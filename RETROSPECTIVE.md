@@ -86,10 +86,10 @@
 
 Deividas | 
 Darius | reviews are slow, should have a dedicated person to review atleast once a day
-Mikalojus | 
+Mikalojus | problems with issues being automatically moved from backlog to in progress to in review categories
 
-**sprint 4**
+**sprint 5**
 
 Deividas | 
 Darius | we should act upon the retrospective of previous sprints
-Mikalojus | 
+Mikalojus | work was very concentrated in the last couple of days, not spread out more or less evenly across the sprint
