@@ -35,3 +35,13 @@ export async function getEvent(id: string) {
 
     return {event, ticket: ticket};
 }
+
+export async function getMyEvents() {
+    const session = await getSession();
+
+    if (!session.user) {
+        return [];
+    }
+
+    return await db.select().from(events).where(eq(events.creatorId, session.user.id));
+}
