@@ -1,3 +1,5 @@
+"use client";
+
 import { render, screen } from '@testing-library/react';
 import type { User } from 'better-auth';
 import { describe, expect, it } from 'vitest';
