@@ -2,7 +2,7 @@
 
 import { db } from "@/db/client";
 import { events, tickets } from "@/db/schema";
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { getSession } from "./profile";
 
 export async function getMyTickets() {

@@ -8,8 +8,11 @@
 		"start": "next start",
 		"format": "biome format --write",
 		"lint": "biome lint --write",
+		"test:unit": "vitest",
 		"generate": "drizzle-kit generate",
-		"generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts --config lib/auth/config.ts"
+		"generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts --config lib/auth/config.ts",
+		"test:e2e": "playwright test",
+		"test:e2e:ui": "playwright test --ui"
 	},
 	"dependencies": {
 		"@hugeicons/core-free-icons": "^4.1.1",
@@ -36,20 +39,27 @@
 		"valibot": "^1.4.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.10",
+		"@biomejs/biome": "latest",
+		"@playwright/test": "^1.59.1",
 		"@tailwindcss/postcss": "^4.2.4",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.2",
 		"@types/node": "^20.19.39",
 		"@types/pg": "^8.20.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^6.0.1",
 		"drizzle-kit": "^0.31.10",
 		"eslint": "^9.39.4",
 		"eslint-config-next": "16.1.6",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.5",
+		"jsdom": "^29.1.1",
 		"prettier": "^3.8.3",
 		"tailwindcss": "^4.2.4",
 		"tsx": "^4.21.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vitest": "^4.1.5"
 	}
 }
