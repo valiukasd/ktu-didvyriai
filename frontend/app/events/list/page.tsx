@@ -1,7 +1,7 @@
 import { EventCard } from "@/components/events/event-card";
 import { EventFilter } from "@/components/events/event-filter";
 import { getEvents } from "@/lib/data/events";
-import { getSession } from "@/lib/data/profile";
+
 export default async function Home({
     searchParams,
 }: {
@@ -10,8 +10,6 @@ export default async function Home({
     const params = await searchParams;
     const isUpcoming = params.upcoming !== "false";
     const events = await getEvents({ upcoming: isUpcoming });
-    const session = await getSession();
-
 
     return (
         <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto py-8">
@@ -24,7 +22,7 @@ export default async function Home({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {events.map((event) => (
-                    <EventCard key={event.creatorId = session.user.id} event={event} />
+                    <EventCard key={event.id} event={event} />
                 ))}
                 {events.length === 0 && (
                     <div className="col-span-1 md:col-span-2 text-center text-muted-foreground py-10">
