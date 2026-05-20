@@ -12,5 +12,5 @@ if (!databaseUrl) {
 export const db = drizzle(databaseUrl, { schema });
 
 await migrate(db, {
-	migrationsFolder: "migrations",
+	migrationsFolder: __dirname + "migrations",
 });
