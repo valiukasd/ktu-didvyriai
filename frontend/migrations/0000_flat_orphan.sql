@@ -34,6 +34,7 @@ CREATE TABLE "users" (
 	"image" text,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"age" integer DEFAULT 18 NOT NULL,
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
@@ -47,16 +48,21 @@ CREATE TABLE "verifications" (
 );
 --> statement-breakpoint
 CREATE TABLE "events" (
-	"id" uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid() NOT NULL,
-	"creator_id" uuid,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"creator_id" uuid NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"event_name" text NOT NULL,
+	"ticket_count" integer NOT NULL,
+	"location" text NOT NULL,
+	"event_date" timestamp NOT NULL,
+	"minimum_age" integer
 );
 --> statement-breakpoint
 CREATE TABLE "tickets" (
-	"id" uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid() NOT NULL,
-	"user_id" uuid,
-	"event_id" uuid,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"user_id" uuid NOT NULL,
+	"event_id" uuid NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );

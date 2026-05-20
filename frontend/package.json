@@ -11,6 +11,8 @@
 		"test:unit": "vitest",
 		"generate": "drizzle-kit generate",
 		"generate:auth": "pnpm dlx auth@latest generate --output db/schema/auth.ts --config lib/auth/config.ts",
+		"postbuild": "drizzle-kit push",
+		"migrate": "drizzle-kit push",
 		"test:e2e": "playwright test",
 		"test:e2e:ui": "playwright test --ui"
 	},
